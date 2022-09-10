@@ -1,0 +1,1 @@
+//Refer to: https://flaviocopes.com/svelte-state-management/
