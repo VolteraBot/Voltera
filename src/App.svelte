@@ -1,38 +1,59 @@
 <script>
-  import Greet from './components/Greet.svelte'
+  import {
+    Header,
+    HeaderUtilities,
+    HeaderGlobalAction,
+    SideNav,
+    SideNavItems,
+    SideNavMenu,
+    SideNavMenuItem,
+    SideNavLink,
+    SkipToContent,
+    Content,
+    Grid,
+    Row,
+    Column,
+  } from "carbon-components-svelte";
+
+  import Fade from "carbon-icons-svelte/lib/Fade.svelte"
+  import VolteraIcon from "./components/VolteraIcon.svelte";
+  import VolteraTitle from "./components/VolteraTitle.svelte";
+
+  let isSideNavOpen = false;
 </script>
 
-<main class="container">
-  <h1>Welcome to Tauri!</h1>
-
-  <div class="row">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo vite" alt="Vite Logo" />
-    </a>
-    <a href="https://tauri.app" target="_blank">
-      <img src="/tauri.svg" class="logo tauri" alt="Tauri Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank">
-      <img src="/svelte.svg" class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-
-  <p>
-    Click on the Tauri, Vite, and Svelte logos to learn more.
-  </p>
-
-  <div class="row">
-    <Greet />
-  </div>
-
-</main>
-
-<style>
-  .logo.vite:hover {
-    filter: drop-shadow(0 0 2em #747bff);
-  }
-
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00);
-  }
-</style>
+<Header bind:isSideNavOpen data-tauri-drag-region>
+  <svelte:fragment slot="platform">
+    <VolteraIcon />
+    <VolteraTitle />
+  </svelte:fragment>
+  <svelte:fragment slot="skip-to-content">
+    <SkipToContent />
+  </svelte:fragment>
+  <HeaderUtilities>
+    <!--<HeaderGlobalAction aria-label="Minimize" icon={Subtract} on:click={appWindow.minimize()} />
+    <HeaderGlobalAction aria-label="Maximize" icon={CollapseAll} on:click={appWindow.toggleMaximize()}/>
+    <HeaderGlobalAction aria-label="Close" icon={Close} on:click={appWindow.close()}/>-->
+  </HeaderUtilities>
+</Header>
+<SideNav bind:isOpen={isSideNavOpen} rail>
+  <SideNavItems>
+    <SideNavLink icon={Fade} text="Link 1" />
+    <SideNavLink icon={Fade} text="Link 2" />
+    <SideNavLink icon={Fade} text="Link 3" />
+    <SideNavMenu icon={Fade} text="Menu">
+      <SideNavMenuItem href="/" text="Link 1" />
+      <SideNavMenuItem href="/" text="Link 2" />
+      <SideNavMenuItem href="/" text="Link 3" />
+    </SideNavMenu>
+  </SideNavItems>
+</SideNav>
+<Content>
+  <Grid>
+    <Row>
+      <Column>
+        <h1>Welcome</h1>
+      </Column>
+    </Row>
+  </Grid>
+</Content>
