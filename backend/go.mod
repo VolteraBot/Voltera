@@ -1,3 +1,3 @@
-module github.com/BhavyaSingh2611/Voltera/backend
+module github.com/VolteraBot/Voltera/backend
 
 go 1.19
